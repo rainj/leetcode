@@ -26,7 +26,7 @@ public class Solution002 implements Solution {
             }
             i = leftIndex;
         }
-        i = middleIndex;
+        i = middleIndex + 1;
         while(i < length - (result.length() / 2)) {
             int leftIndex = findSameChar(charArray, charArray[i], i, length, true);
             int rightIndex = findSameChar(charArray, charArray[i], i, length, false);

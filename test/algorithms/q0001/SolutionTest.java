@@ -1,8 +1,9 @@
 package algorithms.q0001;
 
-import org.junit.Before;
+import static org.junit.Assert.assertArrayEquals;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class SolutionTest {
 
@@ -13,7 +14,7 @@ public class SolutionTest {
         this.solution = new Solution001();
     }
 
-    @org.junit.Test
+    @Test
     public void testTwoSum() throws Exception {
         int[] nums = new int[]{
             2, 7, 11, 15
