@@ -1,9 +1,10 @@
-package algorithms.q0023;
+package algorithms.q0025;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class SolutionTest {
 
@@ -11,19 +12,25 @@ public class SolutionTest {
 
 	@Before
 	public void setUp() {
-		solution = new Solution002();
+		solution = new Solution001();
 	}
 
 	@Test
 	public void testMerge3List() {
-		ListNode[] lists = buildListNode(new int[][] {
-			{3, 6, 9, 12},
-			{ 2, 4, 6, 8 },
-			{ 1, 5, 7, 11 }
-		});
-		ListNode result = solution.mergeKLists(lists);
-		assertTrue(listNodeMatch(result, buildListNode(new int[] { 1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 11, 12 })));
+		ListNode head = buildListNode(new int[] { 1, 2, 3, 4, 5 });
+		ListNode to = this.travelTo(head, 4);
+//		print(solution.reverseKGroup(head, 3));
+		assertTrue(listNodeMatch(solution.reverseKGroup(head, 3), buildListNode(new int[] { 3, 2, 1, 4, 5 })));
+	}
 
+	void print(ListNode head) {
+		System.out.print(head.val);
+		ListNode current = head.next;
+		while (current != null) {
+			System.out.print("-->" + current.val);
+			current = current.next;
+		}
+		System.out.println();
 	}
 
 	boolean listNodeMatch(ListNode s, ListNode t) {
@@ -36,15 +43,17 @@ public class SolutionTest {
 
 		return null == source && null == target;
 	}
-
-	ListNode[] buildListNode(int[][] data) {
-		ListNode[] result = new ListNode[data.length];
-		for(int i = 0; i < data.length; i ++) {
-			result[i] = buildListNode(data[i]);
-		}
-		return result;
-	}
 	
+	ListNode travelTo(ListNode head, int count) {
+		ListNode to = head;
+		int c = count;
+		while (c > 0) {
+			c--;
+			to = to.next;
+		}
+		return to;
+	}
+
 	ListNode buildListNode(int[] data) {
 		ListNode current = new ListNode(0);
 		ListNode head = current;
